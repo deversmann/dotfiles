@@ -1,0 +1,89 @@
+#!/bin/sh
+
+system_type=$(uname -s)
+
+
+# Homebrew
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+fi
+
+
+# iTerm2 config
+if [ "$system_type" = "Darwin" ]; then
+
+  # possibly add something here to ensure iTerm2 is installed using Homebrew
+  # cask like in the previous example
+
+  if [ -d "$HOME/.iterm2" ]; then
+    echo "Setting iTerm preference folder"
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
+  fi
+
+fi
+
+
+# link openjdk
+if [ "$system_type" = "Darwin" ]; then
+  if [ -d $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk ] && [ ! -d /Library/Java/JavaVirtualMachines/openjdk.jdk ]; then
+    echo "Linking openjdk to system location (may prompt)"
+    sudo ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+  fi
+fi
+
+
+# update yadm repo
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:deversmann/dotfiles.git"
+
+
+# git setup
+git config --global credential.helper 'osxkeychain'
+git config --global user.name 'Damien Eversmann'
+git config --global user.email 'damien.eversmann@gmail.com'
+
+
+# install omz and plugins
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
+# install ansible
+pip3 install ansible
+
+
+# Post install config for managing Munki installs:
+echo "Installing optional MSC apps (may prompt)"
+sudo cat > /Library/Managed\ Installs/manifests/SelfServeManifest <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>managed_installs</key>
+	<array>
+		<string>BackupAndSync</string>
+		<string>Cyberduck</string>
+		<string>GIMP</string>
+		<string>GrandPerspective</string>
+		<string>HangoutsChat</string>
+		<string>Zoom.us</string>
+	</array>
+	<key>managed_uninstalls</key>
+	<array/>
+</dict>
+</plist>
+EOF
+open munki://updates
+sudo /usr/local/munki/managedsoftwareupdate --auto
