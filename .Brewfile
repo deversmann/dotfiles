@@ -12,7 +12,7 @@ brew "mas"
 brew "oath-toolkit"
 brew "openjdk"
 brew "openshift-cli"
-brew yadm
+#brew "yadm"
 
 # Brew Font Casks
 cask "font-hack-nerd-font"
