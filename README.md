@@ -31,4 +31,7 @@ Steps covered by the bootstrap:
 - after xcode: ```sudo xcodebuild -license accept```
 - yadm bootstrap? - [https://github.com/TheLocehiliosan/yadm/blob/master/bootstrap](https://github.com/TheLocehiliosan/yadm/blob/master/bootstrap)
 - ssh keys
-- 
+- Vagrant
+  - Vagrant plugins: registration
+  - ```~/.vagrant.d/Vagrantfile``` with registration password
+- RH MSC (Munki) optional installs (check for RH machine first)
