@@ -5,6 +5,7 @@ This is my from scratch setup for my work MacBook.  It's a work in progress, but
 ## Pre-requisites
 
 - ```git``` - Install either as a download or by installing the Apple Command Line Tools
+  - ```sudo xcode-select --install```
 - Finish all of the initial setup (MSC) and updates (Apple) so nothing is pending. 
 
 ## Installation
