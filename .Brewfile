@@ -16,7 +16,7 @@ brew "oath-toolkit"
 brew "openjdk"
 brew "openshift-cli"
 brew "podman"
-#brew "yadm"
+#brew "yadm"  # need to figure out a solution to install without clashing with preinstalled instance
 
 # Brew Font Casks
 cask "font-hack-nerd-font"
@@ -31,10 +31,10 @@ cask "microsoft-powerpoint"
 cask "microsoft-word"
 cask "minecraft"
 cask "prusaslicer"
-cask "setapp"
+#cask "setapp"
 cask "superduper"
 cask "vagrant"
-#cask "vagrant-manager"
+#cask "vagrant-manager"  # not sure I need this
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "visual-studio-code"
@@ -45,4 +45,4 @@ mas "BetterSnapTool", id: 417375580
 mas "HotKey", id: 975890633
 mas "iMovie", id: 408981434
 mas "Save to Pocket", id: 1477385213
-mas "Xcode", id: 497799835
+#mas "Xcode", id: 497799835  # takes far too long

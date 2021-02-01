@@ -19,6 +19,10 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
+# RH MSC Optional Installs
+echo "Installing optional installs from Red Hat Managed Software Center (may prompt)"
+sudo ./msc_install.sh BackupAndSync Cyberduck GIMP GoogleChat GrandPerspective LimeChat TheUnarchiver Zoom.us
+
 
 # iTerm2 config
 #if [ "$system_type" = "Darwin" ]; then
