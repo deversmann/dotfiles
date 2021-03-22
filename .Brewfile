@@ -10,12 +10,12 @@ tap "homebrew/services"
 # Brew CLI apps
 brew "go"
 brew "kubernetes-cli"
-brew "python@3.8", link: true
 brew "mas"
 brew "oath-toolkit"
 brew "openjdk"
 brew "openshift-cli"
 brew "podman"
+brew "python@3.8", link: true
 #brew "yadm"  # need to figure out a solution to install without clashing with preinstalled instance
 
 # Brew Font Casks
@@ -25,18 +25,13 @@ cask "font-menlo-for-powerline"
 
 # Brew App Casks
 cask "iterm2"
-cask "microsoft-auto-update"
-cask "microsoft-excel"
-cask "microsoft-powerpoint"
-cask "microsoft-word"
 cask "minecraft"
+cask "obs"
 cask "prusaslicer"
-#cask "setapp"
+cask "setapp"
 cask "superduper"
 cask "vagrant"
-#cask "vagrant-manager"  # not sure I need this
 cask "virtualbox"
-cask "virtualbox-extension-pack"
 cask "visual-studio-code"
 cask "vnc-viewer"
 
