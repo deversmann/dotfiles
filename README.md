@@ -36,3 +36,5 @@ Steps covered by the bootstrap:
   - Vagrant plugins: registration
   - ```~/.vagrant.d/Vagrantfile``` with registration password
 - RH MSC (Munki) optional installs (check for RH machine first)
+- Maybe move away from yadm: [https://www.atlassian.com/git/tutorials/dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)
+
