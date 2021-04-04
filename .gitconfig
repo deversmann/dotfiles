@@ -1,0 +1,5 @@
+[credential]
+	helper = osxkeychain
+[user]
+	name = Damien Eversmann
+	email = damien.eversmann@gmail.com
