@@ -15,9 +15,9 @@ echo "** Attempting checkout of home dir files"
 config checkout &>/dev/null
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
-    echo "** Backing up files that would be overwritten to .config-backup"
+    echo "** Backing up files that would be overwritten to .config-backup:"
     config checkout 2>&1 | egrep "^\s+" | awk '{$1=$1}1' | xargs -I{} dirname ".config-backup/{}" | xargs -I{} mkdir -p {}
-    config checkout 2>&1 | egrep "^\s+" | awk '{$1=$1}1' | xargs -I{} mv "{}" ".config-backup/{}"
+    config checkout 2>&1 | egrep "^\s+" | awk '{$1=$1}1' | tee /dev/tty | xargs -I{} mv "{}" ".config-backup/{}"
     echo "** Attempting checkout of home dir files again"
     config checkout
     exit_code=$?
