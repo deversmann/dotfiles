@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>492</string>
+	<string>509</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>PATH=$PATH:/usr/local/bin /Users/deversma/bin/otp-gen.sh generate -n OATH2883925E</string>
+					<string>PATH=$PATH:/usr/local/bin /Users/deversma/bin/otp-gen.sh generate -n OATH3913691B</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
