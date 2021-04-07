@@ -12,7 +12,7 @@ function config {
 }
 
 echo "** Attempting checkout of home dir files"
-config checkout
+config checkout &>/dev/null
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
     echo "** Backing up files that would be overwritten to .config-backup"
@@ -28,3 +28,4 @@ if [ $exit_code -ne 0 ]; then
 fi;
 echo "** Checkout successful"
 config config status.showUntrackedFiles no
+config push -u origin main
