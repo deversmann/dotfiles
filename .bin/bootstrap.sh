@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 echo "** Creating repo files"
 git clone --bare https://github.com/deversmann/dotfiles.git $HOME/.cfg
 exit_code=$?
@@ -29,3 +30,15 @@ fi;
 echo "** Checkout successful"
 config config status.showUntrackedFiles no
 config push -u origin main
+
+if [ $1 -eq "-2" ]; then
+    echo "stage 2"
+
+    # commented out till I test if it is "idempotent-ish" at all
+    # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # brew bundle --global
+
+    pushd ~/.bin
+    ansible-playbook main.yml
+    popd
+fi;

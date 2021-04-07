@@ -1,0 +1,43 @@
+---
+- hosts: all
+
+  tasks:
+    - name: RH MSC installs
+      ansible.builtin.debug: msg="TODO"
+
+    - name: Register Homebrew prefix
+      ansible.builtin.command: "brew --prefix"
+      register: homebrew_prefix
+      changed_when: False
+
+    - name: Link JDK
+      ansible.builtin.file:
+        state: link
+        src: "{{homebrew_prefix.stdout}}/opt/openjdk/libexec/openjdk.jdk"
+        path: "/Library/Java/JavaVirtualMachines/openjdk.jdk"
+    
+    - name: Check for Oh My Zsh install
+      ansible.builtin.stat:
+        path: "{{ lookup('env', 'ZSH') }}"
+      register: omz_dir
+
+    - name: Oh My Zsh and plugins
+      block:
+        - name: Install Oh My Zsh
+          ansible.builtin.command: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+
+        - name: Install Oh My Zsh Syntax Highlighting plugin
+          ansible.builtin.git:
+            repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+            dest: "{{ lookup('env', 'ZSH_CUSTOM') | default('~/.oh-my-zsh/custom', True) }}/plugins/zsh-syntax-highlighting"
+
+        - name: Install Oh My Zsh Autosuggestions plugin
+          ansible.builtin.git:
+            repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+            dest: "{{ lookup('env', 'ZSH_CUSTOM') | default('~/.oh-my-zsh/custom', True) }}/plugins/zsh-autosuggestions"
+      when: not omz_dir.stat.exists
+
+    - name: System customizations
+      ansible.builtin.debug: msg="TODO"
+    
+...

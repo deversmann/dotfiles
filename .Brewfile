@@ -10,7 +10,6 @@ tap "homebrew/services"
 # Brew CLI apps
 brew "python@3.9"
 brew "ansible@2.9", link: true
-brew "coreutils"
 brew "go"
 brew "kubernetes-cli"
 brew "mas"
