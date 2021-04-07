@@ -8,6 +8,9 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 # Brew CLI apps
+brew "python@3.9"
+brew "ansible@2.9", link: true
+brew "coreutils"
 brew "go"
 brew "kubernetes-cli"
 brew "mas"
@@ -15,8 +18,6 @@ brew "oath-toolkit"
 brew "openjdk"
 brew "openshift-cli"
 brew "podman"
-brew "python@3.8", link: true
-#brew "yadm"  # need to figure out a solution to install without clashing with preinstalled instance
 
 # Brew Font Casks
 cask "font-hack-nerd-font"
