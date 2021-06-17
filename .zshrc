@@ -98,11 +98,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 DEFAULT_USER=deversma
-path+=(~/bin)
-path+=(~/go/bin)
-path+=(~/.gem/ruby/2.6.0/bin)
 
 export BUNDLE_PATH=$(ruby -e 'puts Gem.user_dir')
+path=($HOME/bin $HOME/go/bin $BUNDLE_PATH/bin $path)
+
