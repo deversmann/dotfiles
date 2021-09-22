@@ -6,6 +6,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "microsoft/git"
 
 # Brew CLI apps
 brew "python@3.9"
@@ -24,6 +25,8 @@ cask "font-inconsolata-for-powerline"
 cask "font-menlo-for-powerline"
 
 # Brew App Casks
+cask "audacity"
+cask "git-credential-manager-core"
 cask "iterm2"
 cask "minecraft"
 cask "obs"
