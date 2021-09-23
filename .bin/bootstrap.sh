@@ -31,6 +31,9 @@ echo "** Checkout successful"
 config config status.showUntrackedFiles no
 config push -u origin main
 
+
+echo "0 = $0 ; 1 = $1"
+
 if [ "$1" -eq "-2" ]; then
     echo "stage 2"
 
