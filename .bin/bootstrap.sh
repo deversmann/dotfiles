@@ -31,7 +31,7 @@ echo "** Checkout successful"
 config config status.showUntrackedFiles no
 config push -u origin main
 
-if [ $1 -eq "-2" ]; then
+if [ "$1" -eq "-2" ]; then
     echo "stage 2"
 
     # commented out till I test if it is "idempotent-ish" at all
