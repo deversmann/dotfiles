@@ -1,0 +1,5 @@
+.ssh/*.key
+.ssh/id_rsa
+.ansible_vault_password
+.otp-gen/otp-gen.sqlite
+
