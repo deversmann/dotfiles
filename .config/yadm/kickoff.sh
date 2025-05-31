@@ -11,10 +11,10 @@ if ! xcode-select --print-path &>/dev/null; then
 fi
 
 # Acquire a temporary copy of yadm
-curl -fLo /tmp/yadm https://github.com/yadm-dev/yadm/raw/master/yadm && chmod a+x /tmp/yadm
+curl -fLo ~/tmp/yadm https://github.com/yadm-dev/yadm/raw/master/yadm && chmod a+x ~/tmp/yadm
 
 # Start the party
 pushd ~
-/tmp/yadm clone --bootstrap https://github.com/deversmann/dotfiles
-/tmp/yadm decrypt
+~/tmp/yadm clone --bootstrap https://github.com/deversmann/dotfiles
+~/tmp/yadm decrypt
 popd
