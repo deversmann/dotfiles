@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Install macOS Developer Command Line Tools if needed
+if ! xcode-select --print-path &>/dev/null; then
+    xcode-select --install &>/dev/null
+fi
+
+# Install Ansible if needed
+command -v ansible >/dev/null 2>&1
+ANSIBLE_CHECK=$?
+if [ $ANSIBLE_CHECK -eq 0 ]; then
+    echo "Ansible already installed"
+else
+    python3 -m pip install ansible-core
+fi
+
+# Clone temporary copy of mac_dev_playbook
+mkdir -p ~/tmp/mac_dev_playbook
+git clone https://github.com/deversmann/mac_dev_playbook ~/tmp/mac_dev_playbook
+
+# Run mac_dev_playbook
+pushd ~/tmp/mac_dev_playbook
+if sudo -n true; then
+    ansible-playbook main.yml
+else
+    ansible-playbook main.yml -K
+fi
+popd
+
+# Cleanup
+rm -rf ~/tmp/mac_dev_playbook
+
