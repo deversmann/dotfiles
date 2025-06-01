@@ -37,3 +37,6 @@ tmp/yadm decrypt
 echo "Cleaning up"
 rm tmp/yadm
 popd
+
+echo "All done!!! Open new Terminal window to update paths and load scripts."
+echo
