@@ -31,7 +31,7 @@ curl -fLo ~/tmp/yadm https://github.com/yadm-dev/yadm/raw/master/yadm && chmod a
 echo "Cloning dotfiles and kicking off bootstrap."
 pushd ~
 tmp/yadm clone --bootstrap https://github.com/deversmann/dotfiles
-echo "Decrypting encrypted dotfiles."
+echo "Decrypting encrypted dotfiles. Password will be required for decryption."
 tmp/yadm decrypt
 
 echo "Cleaning up"
