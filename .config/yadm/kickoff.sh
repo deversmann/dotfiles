@@ -12,10 +12,14 @@ fi
 
 # Wait until XCode Command Line Tools installation has finished.
 until $(xcode-select --print-path &> /dev/null); do
-    echo '.';
+    echo -n '.';
     sleep 5;
 done
-echo '\n';
+echo;
+
+echo >> ~/.zprofile
+echo "PATH=\"$(python3 -m site --user-base)/bin:\$PATH\"" >> ~/.zprofile
+echo "export PATH" >> ~/.zprofile
 
 # Acquire a temporary copy of yadm
 mkdir -p ~/tmp
