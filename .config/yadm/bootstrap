@@ -5,16 +5,16 @@ RESET="\e[0m"
 
 echo
 echo
-echo "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
-echo "    ${BGBLACK}${LRED}*                                                               *${RESET}"
-echo "    ${BGBLACK}${LRED}*    This BOOTSTRAP script does the following:                  *${RESET}"
-echo "    ${BGBLACK}${LRED}*    - Install Ansible if its not already present               *${RESET}"
-echo "    ${BGBLACK}${LRED}*    - Grab a temporary copy of the mac_dev_playbook project    *${RESET}"
-echo "    ${BGBLACK}${LRED}*    - Install the prerequisites needed for the playbook        *${RESET}"
-echo "    ${BGBLACK}${LRED}*    - Run the playbook (MAY ASK FOR SUDO PASSWORD)             *${RESET}"
-echo "    ${BGBLACK}${LRED}*    - Cleanup                                                  *${RESET}"
-echo "    ${BGBLACK}${LRED}*                                                               *${RESET}"
-echo "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
+echo -e "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
+echo -e "    ${BGBLACK}${LRED}*                                                               *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    This BOOTSTRAP script does the following:                  *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    - Install Ansible if its not already present               *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    - Grab a temporary copy of the mac_dev_playbook project    *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    - Install the prerequisites needed for the playbook        *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    - Run the playbook (MAY ASK FOR SUDO PASSWORD)             *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*    - Cleanup                                                  *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*                                                               *${RESET}"
+echo -e "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
 echo
 echo
 
