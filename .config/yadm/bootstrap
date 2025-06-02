@@ -1,4 +1,22 @@
 #!/bin/bash
+BGBLACK="\e[40m"
+LRED="\e[91m"
+RESET="\e[0m"
+
+echo
+echo
+echo "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
+echo "    ${BGBLACK}${LRED}*                                                               *${RESET}"
+echo "    ${BGBLACK}${LRED}*    This BOOTSTRAP script does the following:                  *${RESET}"
+echo "    ${BGBLACK}${LRED}*    - Install Ansible if its not already present               *${RESET}"
+echo "    ${BGBLACK}${LRED}*    - Grab a temporary copy of the mac_dev_playbook project    *${RESET}"
+echo "    ${BGBLACK}${LRED}*    - Install the prerequisites needed for the playbook        *${RESET}"
+echo "    ${BGBLACK}${LRED}*    - Run the playbook (MAY ASK FOR SUDO PASSWORD)             *${RESET}"
+echo "    ${BGBLACK}${LRED}*    - Cleanup                                                  *${RESET}"
+echo "    ${BGBLACK}${LRED}*                                                               *${RESET}"
+echo "    ${BGBLACK}${LRED}*****************************************************************${RESET}"
+echo
+echo
 
 echo "Installing Ansible if needed."
 command -v ansible >/dev/null 2>&1

@@ -1,14 +1,23 @@
-PROMPT=$'%{$fg_bold[white]%}╓─{%{$fg_no_bold[blue]%}%n@%m%{$fg_bold[white]%}}─{%{$fg_no_bold[cyan]%}%~%{$fg_bold[white]%}}$(git_super_status)$(virtualenv_prompt_info)%{$fg_bold[white]%}─{%{$fg_no_bold[yellow]%}%D{%a %b %d, %H:%M}%{$fg_bold[white]%}} 
-%{$fg_bold[white]%}╙─{%(?:%{$fg_no_bold[green]%}✔︎:%{$fg_no_bold[red]%}✘)%{$fg_bold[white]%}}%{$fg_bold[white]%} %(!.#.$)%{$reset_color%} '
+# ANSI formatting function (\033[<code>m)
+# 0: reset, 1: bold, 4: underline, 22: no bold, 24: no underline, 31: red, 33: yellow
+omz_f() {
+  [ $# -gt 0 ] || return
+  IFS=";" printf "\033[%sm" $*
+}
+# If stdout is not a terminal ignore all formatting
+[ -t 1 ] || omz_f() { :; }
 
-PS2=$' %{$fg_bold[white]%}>%{$reset_color%} '
+PROMPT=$'$(omz_f 0 1)╓─{$(omz_f 22 34)%n@%m$(omz_f 0 1)}─{$(omz_f 22 36)%~$(omz_f 0 1)}$(git_super_status)$(virtualenv_prompt_info)$(omz_f 0 1)─{$(omz_f 22 33)%D{%a %b %d, %H:%M}$(omz_f 0 1)} 
+$(omz_f 0 1)╙─{%(?:$(omz_f 22 32)✔︎:$(omz_f 22 31)✘)$(omz_f 0 1)}$(omz_f 0 1) %(!.#.$)$(omz_f 0) '
+
+PS2=$' $(omz_f 0 1)>$(omz_f 0) '
 
 unset RPROMPT #because I moved the git status into my left prompt
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}─{%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[white]%}}%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="$(omz_f 0 1)─{$(omz_f 0)"
+ZSH_THEME_GIT_PROMPT_SUFFIX="$(omz_f 0 1)}$(omz_f 0)"
 ZSH_THEME_GIT_PROMPT_BRANCH+=''
-ZSH_THEME_VIRTUALENV_PREFIX="%{$fg_bold[white]%}─{%{$fg_no_bold[green]%}"
-ZSH_THEME_VIRTUALENV_SUFFIX="%{$fg_bold[white]%}}"
+ZSH_THEME_VIRTUALENV_PREFIX="$(omz_f 0 1)─{$(omz_f 22 32)"
+ZSH_THEME_VIRTUALENV_SUFFIX="$(omz_f 0 1)}"
 
 # 🐍 🪾 
